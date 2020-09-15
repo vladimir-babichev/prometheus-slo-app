@@ -1,0 +1,11 @@
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  hosts:
+    - host: slo-app.host
+      paths: ["/"]
+
+# alertRules:
+#   - alert: NoTrafficFlowing
+#     expr: rate(http_requests_total[1m]) < 100

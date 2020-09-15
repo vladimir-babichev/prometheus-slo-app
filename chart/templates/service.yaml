@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "slo-app.fullname" . }}
+  labels:
+    {{- include "slo-app.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: web
+      protocol: TCP
+      name: web
+  selector:
+    {{- include "slo-app.selectorLabels" . | nindent 4 }}

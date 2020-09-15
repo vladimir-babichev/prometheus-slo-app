@@ -1,0 +1,14 @@
+{{- if .Values.alertRules }}
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: {{ include "slo-app.fullname" . }}
+  labels:
+    release: prom-stack # Hack
+    {{- include "slo-app.labels" . | nindent 4 }}
+spec:
+  groups:
+  - name: {{ include "slo-app.fullname" . }}
+    rules:
+    {{- toYaml .Values.alertRules | nindent 4 }}
+{{- end }}
