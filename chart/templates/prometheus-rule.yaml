@@ -8,7 +8,10 @@ metadata:
     {{- include "slo-app.labels" . | nindent 4 }}
 spec:
   groups:
-  - name: {{ include "slo-app.fullname" . }}
+  - name: {{ include "slo-app.fullname" . }}-alertRules
     rules:
     {{- toYaml .Values.alertRules | nindent 4 }}
+  - name: {{ include "slo-app.fullname" . }}-recordRules
+    rules:
+    {{- toYaml .Values.recordRules | nindent 4 }}
 {{- end }}

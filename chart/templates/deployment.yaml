@@ -28,11 +28,11 @@ spec:
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /
+              path: /healthz
               port: web
           readinessProbe:
             httpGet:
-              path: /
+              path: /healthz
               port: web
       {{- with .Values.affinity }}
       affinity:
