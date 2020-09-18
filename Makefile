@@ -6,7 +6,7 @@ IMAGE_NAME ?= vbabichev/$(APP_NAME)
 
 .PHONY: build
 build:
-	docker build -t $(IMAGE_NAME):$(IMAGE_TAG) -f $(ROOT_DIR)/Dockerfile $(ROOT_DIR)/app/
+	docker build -t $(IMAGE_NAME):$(IMAGE_TAG) -f $(ROOT_DIR)/Dockerfile $(ROOT_DIR)/src/
 
 .PHONY: install
 install:
