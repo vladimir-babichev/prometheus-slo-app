@@ -8,7 +8,7 @@ ingress:
 
 alertRules:
   - alert: VersionAlert
-    expr: version{job="metrics-app"} != 1
+    expr: version{job="slo-app"} != 1
 
   - alert: NoTrafficFlowing
     expr: rate(opencensus_io_http_server_request_count{job="slo-app"}[5m]) < 100
