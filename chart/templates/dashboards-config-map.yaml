@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "slo-app.fullname" . }}-dashboards
+  labels:
+    {{- include "slo-app.labels" . | nindent 4 }}
+    grafana_dashboard: "1"
+
+data:
+    {{- (.Files.Glob "dashboards/*.json").AsConfig | nindent 2 }}
+

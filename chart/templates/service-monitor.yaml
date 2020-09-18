@@ -4,7 +4,7 @@ kind: ServiceMonitor
 metadata:
   name: {{ include "slo-app.fullname" . }}
   labels:
-    release: prom-stack # Hack!
+    release: prometheus-operator # Hack!
     {{- include "slo-app.labels" . | nindent 4 }}
 spec:
   endpoints:
