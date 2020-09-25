@@ -8,10 +8,6 @@ IMAGE_NAME ?= vbabichev/$(APP_NAME)
 build:
 	docker build -t $(IMAGE_NAME):$(IMAGE_TAG) -f $(ROOT_DIR)/Dockerfile $(ROOT_DIR)/src/
 
-.PHONY: install
-install:
-	helm install -f values.yaml $(APP_NAME) chart/
-
-.PHONE: upgrade
-upgrade:
-	helm upgrade -f values.yaml $(APP_NAME) chart/
+.PHONY: deploy
+deploy:
+	helm upgrade -i -f values.yaml $(APP_NAME) chart/
